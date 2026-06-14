@@ -1,0 +1,52 @@
+# .gitignore for Node.js server and Expo React Native client
+
+# Node.js (server)
+server/node_modules/
+server/.env
+server/.DS_Store
+server/npm-debug.log*
+server/yarn-debug.log*
+server/yarn-error.log*
+server/.next/
+server/dist/
+server/build/
+server/.cache/
+server/.turbo/
+
+# Expo React Native (client)
+client/node_modules/
+client/.expo/
+client/.expo-shared/
+client/.env
+client/.DS_Store
+client/web-build/
+client/dist/
+client/build/
+client/.cache/
+client/.turbo/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+.env
+*.local
+*.env.*
+
+# Expo specific
+*.expo/*
+.expo/*
+.expo-shared/*
