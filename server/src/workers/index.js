@@ -1,0 +1,1 @@
+import './dietPlan.worker.js';

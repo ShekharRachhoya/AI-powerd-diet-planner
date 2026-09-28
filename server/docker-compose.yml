@@ -1,0 +1,67 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    container_name: ai-health-api
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    env_file:
+      - .env
+
+    depends_on:
+      - mongodb
+      - redis
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    command: node src/workers/index.js
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    env_file:
+      - .env
+
+    depends_on:
+      - mongodb
+      - redis
+
+  mongodb:
+    image: mongo:8
+
+    container_name:
+      mongodb
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:8-alpine
+
+    container_name:
+      redis
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mongo_data:
+  redis_data:
